@@ -14,41 +14,41 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Member,
-    MemberFromJSON,
-    MemberFromJSONTyped,
-    MemberToJSON,
+    Token,
+    TokenFromJSON,
+    TokenFromJSONTyped,
+    TokenToJSON,
 } from './';
 
 /**
  * 
  * @export
- * @interface MemberList
+ * @interface DeleteTokenResponse
  */
-export interface MemberList {
+export interface DeleteTokenResponse {
     /**
      * 
-     * @type {Array<Member>}
-     * @memberof MemberList
+     * @type {Token}
+     * @memberof DeleteTokenResponse
      */
-    members?: Array<Member>;
+    token?: Token;
 }
 
-export function MemberListFromJSON(json: any): MemberList {
-    return MemberListFromJSONTyped(json, false);
+export function DeleteTokenResponseFromJSON(json: any): DeleteTokenResponse {
+    return DeleteTokenResponseFromJSONTyped(json, false);
 }
 
-export function MemberListFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberList {
+export function DeleteTokenResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteTokenResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'members': !exists(json, 'members') ? undefined : ((json['members'] as Array<any>).map(MemberFromJSON)),
+        'token': !exists(json, 'token') ? undefined : TokenFromJSON(json['token']),
     };
 }
 
-export function MemberListToJSON(value?: MemberList | null): any {
+export function DeleteTokenResponseToJSON(value?: DeleteTokenResponse | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -57,7 +57,7 @@ export function MemberListToJSON(value?: MemberList | null): any {
     }
     return {
         
-        'members': value.members === undefined ? undefined : ((value.members as Array<any>).map(MemberToJSON)),
+        'token': TokenToJSON(value.token),
     };
 }
 

@@ -1,4 +1,6 @@
 export * from './AcceptInviteRequest';
+export * from './DeleteInviteResponse';
+export * from './DeleteTokenResponse';
 export * from './Invite';
 export * from './InviteList';
 export * from './InviteRequest';

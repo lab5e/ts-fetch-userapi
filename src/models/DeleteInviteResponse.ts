@@ -14,41 +14,41 @@
 
 import { exists, mapValues } from '../runtime';
 import {
-    Member,
-    MemberFromJSON,
-    MemberFromJSONTyped,
-    MemberToJSON,
+    Invite,
+    InviteFromJSON,
+    InviteFromJSONTyped,
+    InviteToJSON,
 } from './';
 
 /**
  * 
  * @export
- * @interface MemberList
+ * @interface DeleteInviteResponse
  */
-export interface MemberList {
+export interface DeleteInviteResponse {
     /**
      * 
-     * @type {Array<Member>}
-     * @memberof MemberList
+     * @type {Invite}
+     * @memberof DeleteInviteResponse
      */
-    members?: Array<Member>;
+    invite?: Invite;
 }
 
-export function MemberListFromJSON(json: any): MemberList {
-    return MemberListFromJSONTyped(json, false);
+export function DeleteInviteResponseFromJSON(json: any): DeleteInviteResponse {
+    return DeleteInviteResponseFromJSONTyped(json, false);
 }
 
-export function MemberListFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberList {
+export function DeleteInviteResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteInviteResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'members': !exists(json, 'members') ? undefined : ((json['members'] as Array<any>).map(MemberFromJSON)),
+        'invite': !exists(json, 'invite') ? undefined : InviteFromJSON(json['invite']),
     };
 }
 
-export function MemberListToJSON(value?: MemberList | null): any {
+export function DeleteInviteResponseToJSON(value?: DeleteInviteResponse | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -57,7 +57,7 @@ export function MemberListToJSON(value?: MemberList | null): any {
     }
     return {
         
-        'members': value.members === undefined ? undefined : ((value.members as Array<any>).map(MemberToJSON)),
+        'invite': InviteToJSON(value.invite),
     };
 }
 

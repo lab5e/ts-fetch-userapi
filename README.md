@@ -1,4 +1,4 @@
-## @lab5e/ts-fetch-userapi@1.3.9
+## @lab5e/ts-fetch-userapi@1.3.10
 
 This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install @lab5e/ts-fetch-userapi@1.3.9 --save
+npm install @lab5e/ts-fetch-userapi@1.3.10 --save
 ```
 
 _unPublished (not recommended):_

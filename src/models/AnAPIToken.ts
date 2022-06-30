@@ -16,9 +16,9 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Token
+ * @interface AnAPIToken
  */
-export interface Token {
+export interface AnAPIToken {
     /**
      * The resource of the token.
      * 
@@ -28,7 +28,7 @@ export interface Token {
      * `/collections` will apply to all collectins while `/collections/{id}`
      * will apply to that particular collection.
      * @type {string}
-     * @memberof Token
+     * @memberof AnAPIToken
      */
     resource?: string;
     /**
@@ -37,40 +37,34 @@ export interface Token {
      * If this is set to `true` the token can be used for
      * write operations in the API such as POST, DELETE and PATCH.
      * @type {boolean}
-     * @memberof Token
+     * @memberof AnAPIToken
      */
     write?: boolean;
     /**
-     * Use this in the `X-API-Token` header when using the API.
-     * @type {string}
-     * @memberof Token
-     */
-    token?: string;
-    /**
      * Tags for the token.
      * @type {{ [key: string]: string; }}
-     * @memberof Token
+     * @memberof AnAPIToken
      */
     tags?: { [key: string]: string; };
     /**
      * The last time the token was used. Time in ms since epoch.
      * @type {string}
-     * @memberof Token
+     * @memberof AnAPIToken
      */
     lastUse?: string;
     /**
      * 
      * @type {string}
-     * @memberof Token
+     * @memberof AnAPIToken
      */
     uses?: string;
 }
 
-export function TokenFromJSON(json: any): Token {
-    return TokenFromJSONTyped(json, false);
+export function AnAPITokenFromJSON(json: any): AnAPIToken {
+    return AnAPITokenFromJSONTyped(json, false);
 }
 
-export function TokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): Token {
+export function AnAPITokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): AnAPIToken {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -78,14 +72,13 @@ export function TokenFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tok
         
         'resource': !exists(json, 'resource') ? undefined : json['resource'],
         'write': !exists(json, 'write') ? undefined : json['write'],
-        'token': !exists(json, 'token') ? undefined : json['token'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'lastUse': !exists(json, 'lastUse') ? undefined : json['lastUse'],
         'uses': !exists(json, 'uses') ? undefined : json['uses'],
     };
 }
 
-export function TokenToJSON(value?: Token | null): any {
+export function AnAPITokenToJSON(value?: AnAPIToken | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -96,7 +89,6 @@ export function TokenToJSON(value?: Token | null): any {
         
         'resource': value.resource,
         'write': value.write,
-        'token': value.token,
         'tags': value.tags,
         'lastUse': value.lastUse,
         'uses': value.uses,

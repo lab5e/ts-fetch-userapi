@@ -23,53 +23,46 @@ import {
 /**
  * 
  * @export
- * @interface Team
+ * @interface ATeam
  */
-export interface Team {
-    /**
-     * 
-     * @type {string}
-     * @memberof Team
-     */
-    teamId?: string;
+export interface ATeam {
     /**
      * 
      * @type {boolean}
-     * @memberof Team
+     * @memberof ATeam
      */
     isPrivate?: boolean;
     /**
      * 
      * @type {{ [key: string]: string; }}
-     * @memberof Team
+     * @memberof ATeam
      */
     tags?: { [key: string]: string; };
     /**
      * 
      * @type {Array<Member>}
-     * @memberof Team
+     * @memberof ATeam
      */
     members?: Array<Member>;
 }
 
-export function TeamFromJSON(json: any): Team {
-    return TeamFromJSONTyped(json, false);
+export function ATeamFromJSON(json: any): ATeam {
+    return ATeamFromJSONTyped(json, false);
 }
 
-export function TeamFromJSONTyped(json: any, ignoreDiscriminator: boolean): Team {
+export function ATeamFromJSONTyped(json: any, ignoreDiscriminator: boolean): ATeam {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'teamId': !exists(json, 'teamId') ? undefined : json['teamId'],
         'isPrivate': !exists(json, 'isPrivate') ? undefined : json['isPrivate'],
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'members': !exists(json, 'members') ? undefined : ((json['members'] as Array<any>).map(MemberFromJSON)),
     };
 }
 
-export function TeamToJSON(value?: Team | null): any {
+export function ATeamToJSON(value?: ATeam | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -78,7 +71,6 @@ export function TeamToJSON(value?: Team | null): any {
     }
     return {
         
-        'teamId': value.teamId,
         'isPrivate': value.isPrivate,
         'tags': value.tags,
         'members': value.members === undefined ? undefined : ((value.members as Array<any>).map(MemberToJSON)),

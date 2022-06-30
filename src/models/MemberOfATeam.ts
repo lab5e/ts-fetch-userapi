@@ -23,53 +23,39 @@ import {
 /**
  * 
  * @export
- * @interface Member
+ * @interface MemberOfATeam
  */
-export interface Member {
+export interface MemberOfATeam {
     /**
      * 
      * @type {string}
-     * @memberof Member
-     */
-    teamId?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Member
+     * @memberof MemberOfATeam
      */
     role?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Member
-     */
-    userId?: string;
-    /**
-     * 
      * @type {UserProfile}
-     * @memberof Member
+     * @memberof MemberOfATeam
      */
     user?: UserProfile;
 }
 
-export function MemberFromJSON(json: any): Member {
-    return MemberFromJSONTyped(json, false);
+export function MemberOfATeamFromJSON(json: any): MemberOfATeam {
+    return MemberOfATeamFromJSONTyped(json, false);
 }
 
-export function MemberFromJSONTyped(json: any, ignoreDiscriminator: boolean): Member {
+export function MemberOfATeamFromJSONTyped(json: any, ignoreDiscriminator: boolean): MemberOfATeam {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
-        'teamId': !exists(json, 'teamId') ? undefined : json['teamId'],
         'role': !exists(json, 'role') ? undefined : json['role'],
-        'userId': !exists(json, 'userId') ? undefined : json['userId'],
         'user': !exists(json, 'user') ? undefined : UserProfileFromJSON(json['user']),
     };
 }
 
-export function MemberToJSON(value?: Member | null): any {
+export function MemberOfATeamToJSON(value?: MemberOfATeam | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -78,9 +64,7 @@ export function MemberToJSON(value?: Member | null): any {
     }
     return {
         
-        'teamId': value.teamId,
         'role': value.role,
-        'userId': value.userId,
         'user': UserProfileToJSON(value.user),
     };
 }
